@@ -43,7 +43,7 @@ public class MirrorActivity extends ActionBarActivity {
     private ImageView mXKCDImage;
     private MoodModule moodModule;
 
-    private XKCDModule.XKCDListener mXKCDListener = new XKCDModule.XKCDListener() {
+/*    private XKCDModule.XKCDListener mXKCDListener = new XKCDModule.XKCDListener() {
         @Override
         public void onNewXKCDToday(String url) {
             if (TextUtils.isEmpty(url)) {
@@ -53,7 +53,7 @@ public class MirrorActivity extends ActionBarActivity {
                 mXKCDImage.setVisibility(View.VISIBLE);
             }
         }
-    };
+    };*/
 
     private YahooFinanceModule.StockListener mStockListener = new YahooFinanceModule.StockListener() {
         @Override
@@ -120,7 +120,7 @@ public class MirrorActivity extends ActionBarActivity {
         mBikeTodayText = (TextView) findViewById(R.id.can_bike);
         mStockText = (TextView) findViewById(R.id.stock_text);
         mMoodText = (TextView) findViewById(R.id.mood_text);
-        mXKCDImage = (ImageView) findViewById(R.id.xkcd_image);
+/*        mXKCDImage = (ImageView) findViewById(R.id.xkcd_image);
 
         //Negative of XKCD image
         float[] colorMatrixNegative = {
@@ -131,7 +131,7 @@ public class MirrorActivity extends ActionBarActivity {
         };
         ColorFilter colorFilterNegative = new ColorMatrixColorFilter(colorMatrixNegative);
 //        mXKCDImage.setColorFilter(colorFilterNegative); // not inverting for now
-
+*/
         setViewState();
     }
 
@@ -162,11 +162,11 @@ public class MirrorActivity extends ActionBarActivity {
         mWaterPlants.setVisibility(ChoresModule.waterPlantsToday() ? View.VISIBLE : View.GONE);
         mGroceryList.setVisibility(ChoresModule.makeGroceryListToday() ? View.VISIBLE : View.GONE);
 
-        ForecastModule.getHourlyForecast(getResources(), 40.681045, -73.9931749, mForecastListener);
-        XKCDModule.getXKCDForToday(mXKCDListener);
+        ForecastModule.getHourlyForecast(getResources(), 45.4214, 75.6919, mForecastListener);
+//        XKCDModule.getXKCDForToday(mXKCDListener);
 
         if (WeekUtil.isWeekday() && WeekUtil.afterFive()) {
-            YahooFinanceModule.getStockForToday("ETSY", mStockListener);
+            YahooFinanceModule.getStockForToday("IGI443", mStockListener);
         } else {
             mStockText.setVisibility(View.GONE);
         }

@@ -1,17 +1,17 @@
 <resources>
     <string name="app_name">HomeMirror</string>
 
-    <string name="default_mirror_mirror">Mirror, mirror on the wall. Hannah is the prettiest of them all.</string>
+    <string name="default_mirror_mirror">Mirror, mirror on the wall. What\'s Up.</string>
 
     <!-- Owners -->
-    <string name="owners">Hannah and Andy</string>
+    <string name="owners">Phil and Leanne</string>
 
     <!-- Time module -->
     <string name="good_morning">Good morning, %s</string>
     <string name="good_afternoon">Good afternoon, %s</string>
     <string name="good_evening">Good evening, %s</string>
     <string name="late">You\'re up late, %s</string>
-    <string name="bedtime">Good evening, %s\n\nIt\'s Hannah\'s bedtime.</string>
+    <string name="bedtime">Good evening, %s\n\nIt\'s Phil\'s bedtime.</string>
 
     <!-- Forecast module -->
     <string name="bike_today">Bike Today</string>
@@ -24,10 +24,6 @@
     <string name="water_plants">Water Plants Today</string>
     <string name="grocery_list">Make Grocery List</string>
 
-    <!-- Mood module -->
-    <string name="it_gets_better">It gets better!</string>
-    <string name="looking_good">Looking good, keep at it!</string>
-    <string name="something_special">You\'re something special</string>
-
-
+    <!--Keys-->
+    <string name="dark_sky_api_key">0c8b0946e74d2deddb19b7867cbcac20</string>
 </resources>

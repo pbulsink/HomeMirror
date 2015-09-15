@@ -75,12 +75,12 @@ public class ForecastModule {
                     if (hourCalendar.get(Calendar.DAY_OF_MONTH) == dayOfMonthToday) {
                         int hourOfDay = hourCalendar.get(Calendar.HOUR_OF_DAY);
                         Log.i("mirror", "Hour of day is " + hourOfDay + " with precipProb " + hour.precipProbability);
-                        if (hourOfDay >= 7 && hourOfDay <= 11) {
+                        if (hourOfDay >= 7 && hourOfDay <= 9) {
                             if (hour.precipProbability >= 0.3) {
                                 return false;
                             }
-                        } else if (hourOfDay >= 17 && hourOfDay <= 19) {
-                            if (hour.precipProbability >= 0.3) {
+                        } else if (hourOfDay >= 15 && hourOfDay <= 18) {
+                            if (hour.precipProbability >= 0.5) {
                                 return false;
                             }
                         }
