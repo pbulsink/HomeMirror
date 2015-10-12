@@ -40,8 +40,8 @@ public class MirrorActivity extends ActionBarActivity {
     private TextView mMoodText;
     private View mWaterPlants;
     private View mGroceryList;
-    private ImageView mXKCDImage;
-    private MoodModule moodModule;
+    //private ImageView mXKCDImage;
+    //private MoodModule moodModule;
 
 /*    private XKCDModule.XKCDListener mXKCDListener = new XKCDModule.XKCDListener() {
         @Override
@@ -83,7 +83,7 @@ public class MirrorActivity extends ActionBarActivity {
         }
     };
 
-    private MoodModule.MoodListener mMoodListener = new MoodModule.MoodListener() {
+    /*private MoodModule.MoodListener mMoodListener = new MoodModule.MoodListener() {
         @Override
         public void onShouldGivePositiveAffirmation(final String affirmation) {
             runOnUiThread(new Runnable() {
@@ -94,7 +94,7 @@ public class MirrorActivity extends ActionBarActivity {
                 }
             });
         }
-    };
+    };*/
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -119,7 +119,7 @@ public class MirrorActivity extends ActionBarActivity {
         mGroceryList = findViewById(R.id.grocery_list);
         mBikeTodayText = (TextView) findViewById(R.id.can_bike);
         mStockText = (TextView) findViewById(R.id.stock_text);
-        mMoodText = (TextView) findViewById(R.id.mood_text);
+        //mMoodText = (TextView) findViewById(R.id.mood_text);
 /*        mXKCDImage = (ImageView) findViewById(R.id.xkcd_image);
 
         //Negative of XKCD image
@@ -138,7 +138,7 @@ public class MirrorActivity extends ActionBarActivity {
     @Override
     protected void onPause() {
         super.onPause();
-        moodModule.release();
+        //moodModule.release();
     }
 
     @Override
@@ -171,8 +171,8 @@ public class MirrorActivity extends ActionBarActivity {
             mStockText.setVisibility(View.GONE);
         }
 
-        moodModule = new MoodModule(new WeakReference<Context>(this));
-        moodModule.getCurrentMood(mMoodListener);
+        //moodModule = new MoodModule(new WeakReference<Context>(this));
+        //moodModule.getCurrentMood(mMoodListener);
     }
 
     private void showDemoMode() {
