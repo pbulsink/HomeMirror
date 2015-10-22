@@ -48,18 +48,14 @@ public class MirrorActivity extends ActionBarActivity {
     private TextView mMoodText;
     private View mWaterPlants;
     private View mGroceryList;
-<<<<<<< HEAD
-    //private ImageView mXKCDImage;
-    //private MoodModule moodModule;
-=======
     private ImageView mXKCDImage;
     private MoodModule mMoodModule;
     private TextView mNewsHeadline;
     private TextView mCalendarTitleText;
     private TextView mCalendarDetailsText;
->>>>>>> HannahMitt/master
 
-/*    private XKCDModule.XKCDListener mXKCDListener = new XKCDModule.XKCDListener() {
+
+    private XKCDModule.XKCDListener mXKCDListener = new XKCDModule.XKCDListener() {
         @Override
         public void onNewXKCDToday(String url) {
             if (TextUtils.isEmpty(url)) {
@@ -69,7 +65,7 @@ public class MirrorActivity extends ActionBarActivity {
                 mXKCDImage.setVisibility(View.VISIBLE);
             }
         }
-    };*/
+    };
 
     private YahooFinanceModule.StockListener mStockListener = new YahooFinanceModule.StockListener() {
         @Override
@@ -99,9 +95,6 @@ public class MirrorActivity extends ActionBarActivity {
         }
     };
 
-<<<<<<< HEAD
-    /*private MoodModule.MoodListener mMoodListener = new MoodModule.MoodListener() {
-=======
     private NewsModule.NewsListener mNewsListener = new NewsModule.NewsListener() {
         @Override
         public void onNewNews(String headline) {
@@ -116,7 +109,6 @@ public class MirrorActivity extends ActionBarActivity {
     };
 
     private MoodModule.MoodListener mMoodListener = new MoodModule.MoodListener() {
->>>>>>> HannahMitt/master
         @Override
         public void onShouldGivePositiveAffirmation(final String affirmation) {
             runOnUiThread(new Runnable() {
@@ -127,7 +119,7 @@ public class MirrorActivity extends ActionBarActivity {
                 }
             });
         }
-    };*/
+    };
 
     private CalendarModule.CalendarListener mCalendarListener = new CalendarModule.CalendarListener() {
         @Override
@@ -177,21 +169,6 @@ public class MirrorActivity extends ActionBarActivity {
         mGroceryList = findViewById(R.id.grocery_list);
         mBikeTodayText = (TextView) findViewById(R.id.can_bike);
         mStockText = (TextView) findViewById(R.id.stock_text);
-<<<<<<< HEAD
-        //mMoodText = (TextView) findViewById(R.id.mood_text);
-/*        mXKCDImage = (ImageView) findViewById(R.id.xkcd_image);
-
-        //Negative of XKCD image
-        float[] colorMatrixNegative = {
-                -1.0f, 0, 0, 0, 255, //red
-                0, -1.0f, 0, 0, 255, //green
-                0, 0, -1.0f, 0, 255, //blue
-                0, 0, 0, 1.0f, 0 //alpha
-        };
-        ColorFilter colorFilterNegative = new ColorMatrixColorFilter(colorMatrixNegative);
-//        mXKCDImage.setColorFilter(colorFilterNegative); // not inverting for now
-*/
-=======
         mMoodText = (TextView) findViewById(R.id.mood_text);
         mXKCDImage = (ImageView) findViewById(R.id.xkcd_image);
         mNewsHeadline = (TextView) findViewById(R.id.news_headline);
@@ -209,22 +186,17 @@ public class MirrorActivity extends ActionBarActivity {
             ColorFilter colorFilterNegative = new ColorMatrixColorFilter(colorMatrixNegative);
             mXKCDImage.setColorFilter(colorFilterNegative); // not inverting for now
         }
-
->>>>>>> HannahMitt/master
         setViewState();
     }
 
     @Override
     protected void onPause() {
         super.onPause();
-<<<<<<< HEAD
-        //moodModule.release();
-=======
+
 
         if (mMoodModule != null) {
             mMoodModule.release();
         }
->>>>>>> HannahMitt/master
     }
 
     @Override
@@ -246,15 +218,8 @@ public class MirrorActivity extends ActionBarActivity {
 //        mHelloText.setText(TimeModule.getTimeOfDayWelcome(getResources())); // not in current design
 
         mWaterPlants.setVisibility(ChoresModule.waterPlantsToday() ? View.VISIBLE : View.GONE);
-        mGroceryList.setVisibility(ChoresModule.makeGroceryListToday() ? View.VISIBLE : View.GONE);
+        //mGroceryList.setVisibility(ChoresModule.makeGroceryListToday() ? View.VISIBLE : View.GONE);
 
-<<<<<<< HEAD
-        ForecastModule.getHourlyForecast(getResources(), 45.4214, -75.6919, mForecastListener);
-//        XKCDModule.getXKCDForToday(mXKCDListener);
-
-        if (WeekUtil.isWeekday() && WeekUtil.afterFive()) {
-            YahooFinanceModule.getStockForToday("IGI443", mStockListener);
-=======
         ForecastModule.getHourlyForecast(getResources(), mConfigSettings.getForecastUnits(), mConfigSettings.getLatitude(), mConfigSettings.getLongitude(), mForecastListener);
 
         if (mConfigSettings.showNewsHeadline()) {
@@ -278,22 +243,15 @@ public class MirrorActivity extends ActionBarActivity {
 
         if (mConfigSettings.showStock() && WeekUtil.isWeekday() && WeekUtil.afterFive()) {
             YahooFinanceModule.getStockForToday(mConfigSettings.getStockTickerSymbol(), mStockListener);
->>>>>>> HannahMitt/master
         } else {
             mStockText.setVisibility(View.GONE);
         }
-
-<<<<<<< HEAD
-        //moodModule = new MoodModule(new WeakReference<Context>(this));
-        //moodModule.getCurrentMood(mMoodListener);
-=======
         if (mConfigSettings.showMoodDetection()) {
             mMoodModule = new MoodModule(new WeakReference<Context>(this));
             mMoodModule.getCurrentMood(mMoodListener);
         } else {
             mMoodText.setVisibility(View.GONE);
         }
->>>>>>> HannahMitt/master
     }
 
     private void showDemoMode() {

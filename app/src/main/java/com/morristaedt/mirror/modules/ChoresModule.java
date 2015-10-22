@@ -12,7 +12,7 @@ public class ChoresModule {
         return dayOfWeek == Calendar.TUESDAY || dayOfWeek == Calendar.SATURDAY;
     }
 
-    public static boolean makeGroceryListToday() {
+    /*public static boolean makeGroceryListToday() {
         Calendar now = Calendar.getInstance();
         int dayOfWeek = now.get(Calendar.DAY_OF_WEEK);
         if (dayOfWeek == Calendar.SUNDAY) {
@@ -22,5 +22,5 @@ public class ChoresModule {
             return true;
         }
         return false;
-    }
+    }*/
 }

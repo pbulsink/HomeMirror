@@ -26,7 +26,7 @@ public class NewsModule {
             @Override
             protected String doInBackground(Void... params) {
                 RSSReader rssReader = new RSSReader();
-                String url = "http://feeds.bbci.co.uk/news/world/rss.xml?edition=uk";
+                String url = "http://www.cbc.ca/cmlink/rss-topstories";
                 try {
                     RSSFeed feed = rssReader.load(url);
                     return feed.getItems().get(0).getTitle();
