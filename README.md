@@ -1,7 +1,9 @@
 # HomeMirror
 Android application powering the mirror in my house
 
-<img src="https://github.com/HannahMitt/HomeMirror/blob/master/design/IMG_20150825_191621.jpg" width="400"/>
+[Google Play Link](https://play.google.com/store/apps/details?id=com.morristaedt.mirror)
+
+<img src="https://raw.githubusercontent.com/HannahMitt/HomeMirror/master/design/IMG_20151121_183522%20(1).jpg" width="400"/>
 
 Software
 ====
@@ -30,6 +32,8 @@ When its mirror time, I also recommend turning on the device Developer Option: "
 
 Making a Mirror
 ====
+
+[Video walk-through on adafruit (Thank you Becky!)](https://learn.adafruit.com/android-smart-home-mirror)
 
 1. Obtain Android device
 ----

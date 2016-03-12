@@ -34,8 +34,6 @@ import java.lang.ref.WeakReference;
 
 public class MirrorActivity extends ActionBarActivity {
 
-    private static final boolean DEMO_MODE = false;
-
     @NonNull
     private ConfigurationSettings mConfigSettings;
 
@@ -90,8 +88,12 @@ public class MirrorActivity extends ActionBarActivity {
 
         @Override
         public void onShouldBike(boolean showToday, boolean shouldBike) {
-            mBikeTodayText.setVisibility(showToday ? View.VISIBLE : View.GONE);
-            mBikeTodayText.setText(shouldBike ? R.string.bike_today : R.string.no_bike_today);
+            if (mConfigSettings.showBikingHint()) {
+                mBikeTodayText.setVisibility(showToday ? View.VISIBLE : View.GONE);
+                mBikeTodayText.setText(shouldBike ? R.string.bike_today : R.string.no_bike_today);
+            } else {
+                mBikeTodayText.setVisibility(View.GONE);
+            }
         }
     };
 
@@ -220,7 +222,16 @@ public class MirrorActivity extends ActionBarActivity {
         mWaterPlants.setVisibility(ChoresModule.waterPlantsToday() ? View.VISIBLE : View.GONE);
         //mGroceryList.setVisibility(ChoresModule.makeGroceryListToday() ? View.VISIBLE : View.GONE);
 
-        ForecastModule.getHourlyForecast(getResources(), mConfigSettings.getForecastUnits(), mConfigSettings.getLatitude(), mConfigSettings.getLongitude(), mForecastListener);
+        // Get the API key for whichever weather service API key is available
+        // These should be declared as a string in xml
+        int forecastApiKeyRes = getResources().getIdentifier("dark_sky_api_key", "string", getPackageName());
+        int openWeatherApiKeyRes = getResources().getIdentifier("open_weather_api_key", "string", getPackageName());
+
+        if (forecastApiKeyRes != 0) {
+            ForecastModule.getForecastIOHourlyForecast(getString(forecastApiKeyRes), mConfigSettings.getForecastUnits(), mConfigSettings.getLatitude(), mConfigSettings.getLongitude(), mForecastListener);
+        } else if (openWeatherApiKeyRes != 0) {
+            ForecastModule.getOpenWeatherForecast(getString(openWeatherApiKeyRes), mConfigSettings.getForecastUnits(), mConfigSettings.getLatitude(), mConfigSettings.getLongitude(), mForecastListener);
+        }
 
         if (mConfigSettings.showNewsHeadline()) {
             NewsModule.getNewsHeadline(mNewsListener);
@@ -241,7 +252,7 @@ public class MirrorActivity extends ActionBarActivity {
             mCalendarDetailsText.setVisibility(View.GONE);
         }
 
-        if (mConfigSettings.showStock() && WeekUtil.isWeekday() && WeekUtil.afterFive()) {
+        if (mConfigSettings.showStock() && (ConfigurationSettings.isDemoMode() || WeekUtil.isWeekdayAfterFive())) {
             YahooFinanceModule.getStockForToday(mConfigSettings.getStockTickerSymbol(), mStockListener);
         } else {
             mStockText.setVisibility(View.GONE);
@@ -254,18 +265,10 @@ public class MirrorActivity extends ActionBarActivity {
         }
     }
 
-    private void showDemoMode() {
-        if (DEMO_MODE) {
-            mBikeTodayText.setVisibility(View.VISIBLE);
-            mStockText.setVisibility(View.VISIBLE);
-            mWaterPlants.setVisibility(View.VISIBLE);
-            mGroceryList.setVisibility(View.VISIBLE);
-        }
-    }
-
     @Override
     public void onBackPressed() {
         super.onBackPressed();
+        AlarmReceiver.stopMirrorUpdates(this);
         Intent intent = new Intent(this, SetUpActivity.class);
         startActivity(intent);
     }
